@@ -3,6 +3,10 @@ require 'bundler'
 
 Bundler.require
 
-get '/hi' do
-  "Hi Krystov!"
+module Moomoo
+  class App < Sinatra::Base
+    get '/' do
+      haml :home, :locals => {:name => "Ron"}
+    end
+  end
 end
