@@ -1,9 +1,15 @@
 require 'redis'
 
 class Room
-  def initialize
+  def initialize(id=nil)
     @redis = Redis.new
-    @id = @redis.incr "id:room"
+
+    if id
+      @id = id
+    else
+      @id = @redis.incr "id:room"
+    end
+
     @room_prefix = 'room' + @id.to_s + ':'
   end
 

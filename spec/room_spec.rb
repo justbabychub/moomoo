@@ -18,4 +18,15 @@ RSpec.describe Room do
       expect(room.get_users[0..i].sort).to eq users[0..i].sort
     end
   end
+
+  it 'can load existing room' do
+    user = 'Ron'
+    room1 = Room.new
+    room1.add_user user
+
+    room2 = Room.new room1.id
+
+    expect(room2.id).to eq(room1.id)
+    expect(room2.get_users).to eq(room1.get_users)
+  end
 end
