@@ -10,7 +10,7 @@ class Room
       @id = @redis.incr "id:room"
     end
 
-    @room_prefix = 'room' + @id.to_s + ':'
+    @room_prefix = "room:#{@id}:"
   end
 
   def add_user(name)
